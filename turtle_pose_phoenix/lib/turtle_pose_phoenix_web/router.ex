@@ -18,6 +18,8 @@ defmodule TurtlePosePhoenixWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+
+    live "/turtle", TurtleLive
   end
 
   # Other scopes may use custom stacks.
