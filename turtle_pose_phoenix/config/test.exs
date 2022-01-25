@@ -8,8 +8,7 @@ config :turtle_pose_phoenix, TurtlePosePhoenixWeb.Endpoint,
   server: false
 
 # In test we don't send emails.
-config :turtle_pose_phoenix, TurtlePosePhoenix.Mailer,
-  adapter: Swoosh.Adapters.Test
+config :turtle_pose_phoenix, TurtlePosePhoenix.Mailer, adapter: Swoosh.Adapters.Test
 
 # Print only warnings and errors during test
 config :logger, level: :warn
