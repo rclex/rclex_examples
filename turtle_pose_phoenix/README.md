@@ -71,3 +71,8 @@ iex(node2@192.168.0.6)8> GenServer.cast({:global, :turtle}, {:pose, %{x: 123, y:
 
 ### （５）ウェブページのXとYが更新されているか確認する
 http://localhost:4000/turtle
+
+
+# そのうちやるかもリスト
+- [] XとYをいい感じに見せる
+- [] 亀を操作できるようにする？
