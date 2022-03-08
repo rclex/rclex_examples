@@ -2,25 +2,6 @@
 ターミナルのキー入力から`/turtle1/cmd_vel`トピックへturtlesimの制御情報を出版
 
 ## 準備
-- Rclexをcloneし`v0.6.0`にcheckout
-```shell
-$ git clone https://github.com/rclex/rclex.git
-$ cd rclex
-$ git checkout v0.6.0
-```
-- `rclex/packages.txt`を編集してメッセージ型を指定
-```
-geometry_msgs/msg/Twist
-turtlesim/msg/Pose
-```
-- `mix.exs`でRclexのパスを指定
-```elixir
-def deps do
-  [
-    {:rclex, path: "../../rclex"}
-  ]
-end
-```
 - rubyのインストール
 ```shell
 $ apt install ruby
