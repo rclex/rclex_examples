@@ -22,7 +22,7 @@ defmodule TurtleTeleopRclex.MixProject do
   defp deps do
     [
       # {:rclex, path: "../../rclex", override: false}
-      {:rclex, git: "https://github.com/rclex/rclex.git", branch: "config_msgpkg"}
+      {:rclex, "~> 0.6.1"}
     ]
   end
 end
