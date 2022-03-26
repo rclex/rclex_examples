@@ -21,7 +21,8 @@ defmodule TurtleTeleopRclex.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:rclex, path: "../../rclex"}
+      # {:rclex, path: "../../rclex", override: false}
+      {:rclex, "~> 0.6.1"}
     ]
   end
 end

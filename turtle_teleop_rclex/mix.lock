@@ -1,3 +1,5 @@
 %{
   "elixir_make": {:hex, :elixir_make, "0.6.3", "bc07d53221216838d79e03a8019d0839786703129599e9619f4ab74c8c096eac", [:mix], [], "hexpm", "f5cbd651c5678bcaabdbb7857658ee106b12509cd976c2c2fca99688e1daf716"},
+  "rclex": {:hex, :rclex, "0.6.1", "396271b4a8d70f92abdb0ed9e14f748630fc484f78d2446a4b0ebfbad050aec6", [:make, :mix], [{:elixir_make, "~> 0.4", [hex: :elixir_make, repo: "hexpm", optional: false]}, {:rclex_gen_msgs, "~> 0.1.0", [hex: :rclex_gen_msgs, repo: "hexpm", optional: false]}], "hexpm", "67d7e2d4eb663353217f9c3b7a5a8c883d048544833127d462725838c029b2ea"},
+  "rclex_gen_msgs": {:hex, :rclex_gen_msgs, "0.1.0", "265c9dc6a5e820e12a669d3c5eedcaf1a89d340f93b99ae6f5505a610850cc92", [:mix], [], "hexpm", "a6b190dcfb98d45452eeab4145250f9ea4ed65444bf4a146cbe5ed704ae625fb"},
 }
