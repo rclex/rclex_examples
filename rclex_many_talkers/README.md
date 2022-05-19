@@ -1,21 +1,16 @@
 # RclexManyTalkers
 
-**TODO: Add description**
+This is many talkers demo.
 
 ## Installation
+Rclex requires a ROS2 environment and build essentials.
+Please setup the ros environment before running the demo.
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `rclex_many_talkers` to your list of dependencies in `mix.exs`:
+## Run demo
+Run the ROS2 listener or RclexListener.
 
-```elixir
-def deps do
-  [
-    {:rclex_many_talkers, "~> 0.1.0"}
-  ]
-end
 ```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/rclex_many_talkers>.
-
+$ mix deps.get
+$ iex -S mix
+iex > RclexTalker.publish_message
+```
