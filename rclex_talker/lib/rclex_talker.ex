@@ -1,0 +1,26 @@
+defmodule RclexTalker do
+  def publish_message do
+
+    context = Rclex.rclexinit()
+    {:ok, node} = Rclex.ResourceServer.create_singlenode(context, 'talker')
+    {:ok, publisher} = Rclex.Node.create_single_publisher(node, 'StdMsgs.Msg.String', 'chatter')
+    {:ok, timer} = Rclex.ResourceServer.create_timer(&pub_callback/1, publisher, 1000, 'continus_timer')
+
+    Process.sleep(10000)
+
+    Rclex.ResourceServer.stop_timer(timer)
+    Rclex.Node.finish_job(publisher)
+    Rclex.ResourceServer.finish_node(node)
+    Rclex.shutdown(context)
+  end
+
+  defp pub_callback(publisher) do
+    msg = Rclex.Msg.initialize('StdMsgs.Msg.String')
+    data = "Hello World from Rclex!"
+    msg_struct = %Rclex.StdMsgs.Msg.String{data: String.to_charlist(data)}
+    Rclex.Msg.set(msg, msg_struct, 'StdMsgs.Msg.String')
+
+    IO.puts("Rclex: Publishing: #{data}")
+    Rclex.Publisher.publish([publisher], [msg])
+  end
+end
