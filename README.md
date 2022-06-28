@@ -8,8 +8,9 @@ Examples for Rclex
  - turtle_teleop_rclex : key input to turtle_sim sample
  - turtle_pose_phoenix : turtle topic web visualizer
 
+## How to try examples
 
-# how to try example
+Let's get a quick start for [rclex](https://github.com/rclex/rclex) using the Docker environment!
 
 ```
 $ cd your_woking_directry
