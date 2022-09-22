@@ -22,7 +22,7 @@ defmodule TurtleTeleopRclex.MixProject do
   defp deps do
     [
       # {:rclex, path: "../../rclex", override: false}
-      {:rclex, "~> 0.6.1"}
+      {:rclex, "~> 0.7.2"}
     ]
   end
 end
