@@ -23,17 +23,17 @@ $ mix run -e "TurtleTeleopRclex.TeleopKey.start_teleop"
   - D:右回転
   - X:後退
 ### Poseの購読
-- `RclexExamples/TurtlePosePhoenix`からPhoenixを起動
+- `rclex_examples/turtle_pose_phoenix`からPhoenixを起動
 ```shell
 ~/rclex_examples/turtle_pose_phoenix$ iex --name node1@[ip_address] --cookie c2e -S mix phx.server
 iex(node1@[ip_address])1>
 ```
-- `RclexExamples/TurtleTeleopRclex`からiexを起動
+- `rclex_examples/turtle_teleop_rclex`からiexを起動
 ```shell
 ~/rclex_examples/turtle_teleop_rclex$ iex --name node2@[ip_address] --cookie c2e -S mix
 iex(node2@[ip_address])1>
 ```
-- Node.connect()を実行
+- `Node.connect(:"node1@[ip_address]")`を実行
 - node2で`TurtleTeleopRclex.Pose.start_pose/1`を実行
   - 引数はxy座標情報を{:global, :turtle}に送信する間隔
 ```shell

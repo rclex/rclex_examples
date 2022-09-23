@@ -1,8 +1,8 @@
 defmodule TurtleTeleopRclex.TeleopKey do
-  def start_teleop do 
+  def start_teleop do
     context = Rclex.rclexinit()
-    {:ok, nodename} = Rclex.ResourceServer.create_singlenode(context, 'teleop_ex')
-    {:ok, publisher_id} = Rclex.Node.create_single_publisher(nodename, 'GeometryMsgs.Msg.Twist', 'turtle1/cmd_vel')
+    {:ok, nodename} = Rclex.ResourceServer.create_node(context, 'teleop_ex')
+    {:ok, publisher_id} = Rclex.Node.create_publisher(nodename, 'GeometryMsgs.Msg.Twist', 'turtle1/cmd_vel')
     IO.puts("Use W|A|S|D|X keys to move the turtle. Quit 'Q' to quit.")
     teleop_loop(publisher_id)
   end
