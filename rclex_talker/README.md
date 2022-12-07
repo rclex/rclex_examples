@@ -45,6 +45,3 @@ cd rclex_examples/rclex_listener
 iex -S mix
 iex()> RclexListener.subscribe_message
 ```
-
-
-
