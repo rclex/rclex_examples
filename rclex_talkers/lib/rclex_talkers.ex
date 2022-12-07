@@ -1,4 +1,4 @@
-defmodule RclexManyTalkers do
+defmodule RclexTalkers do
   def publish_message(num_talkers) do
     context = Rclex.rclexinit()
     {:ok, nodes} = Rclex.ResourceServer.create_nodes(context, 'talker', num_talkers)

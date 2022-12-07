@@ -1,4 +1,4 @@
-# RclexManyTalkers
+# RclexTalkers
 
 This is many talkers demo.
 
@@ -12,5 +12,5 @@ Run the ROS2 listener or RclexListener.
 ```
 $ mix deps.get
 $ iex -S mix
-iex > RclexTalker.publish_message
+iex > RclexTalkers.publish_message(10)  # 10 Talkers will publish at the same time
 ```
