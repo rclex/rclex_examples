@@ -44,5 +44,5 @@ ros2 run demo_nodes_cpp talker
 cd rclex_examples/rclex_talker
 # (build project, see rclex_talker directory)
 iex -S mix
-iex()> RclexListener.publish_message
+iex()> RclexTalker.publish_message
 ```
