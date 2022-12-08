@@ -1,5 +1,5 @@
 %{
-  "elixir_make": {:hex, :elixir_make, "0.6.3", "bc07d53221216838d79e03a8019d0839786703129599e9619f4ab74c8c096eac", [:mix], [], "hexpm", "f5cbd651c5678bcaabdbb7857658ee106b12509cd976c2c2fca99688e1daf716"},
-  "rclex": {:hex, :rclex, "0.7.2", "bf2caaf10ac5cf8027e21ca44abce22001358a7755b3ee66c4df7bf93b71f282", [:make, :mix], [{:elixir_make, "~> 0.4", [hex: :elixir_make, repo: "hexpm", optional: false]}, {:rclex_gen_msgs, "~> 0.1.0", [hex: :rclex_gen_msgs, repo: "hexpm", optional: false]}], "hexpm", "58453188880d3522d40d044ae1c867e2ea486a9d8b917a9ca255978eee27a7a8"},
+  "elixir_make": {:hex, :elixir_make, "0.7.0", "03e6a43ac701a2afee73bb5dd030b4dcddcb403bf81abb4753c1da64521cd05d", [:mix], [{:castore, "~> 0.1", [hex: :castore, repo: "hexpm", optional: true]}], "hexpm", "b1ccb45cc1c5df16349473b52adbd718f362585a5481d761b8a9fdb45f25b303"},
+  "rclex": {:hex, :rclex, "0.8.2", "f07f235e32ba6c02d024a945457bce3eba101650e44bbcafa593e62a2e4c9efd", [:make, :mix], [{:elixir_make, "~> 0.4", [hex: :elixir_make, repo: "hexpm", optional: false]}], "hexpm", "42afc1e1fb31f7296b407732176d7b652bcb3076a9e2240149a75d8ed498b7fe"},
   "rclex_gen_msgs": {:hex, :rclex_gen_msgs, "0.1.0", "265c9dc6a5e820e12a669d3c5eedcaf1a89d340f93b99ae6f5505a610850cc92", [:mix], [], "hexpm", "a6b190dcfb98d45452eeab4145250f9ea4ed65444bf4a146cbe5ed704ae625fb"},
 }

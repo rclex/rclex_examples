@@ -20,7 +20,7 @@ defmodule RclexListeners.MixProject do
   defp deps do
     [
       # {:rclex, path: "../../rclex", override: false}
-      {:rclex, "~> 0.7.2"}
+      {:rclex, "~> 0.8.2"}
     ]
   end
 end
