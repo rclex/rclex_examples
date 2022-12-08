@@ -18,8 +18,12 @@ defmodule TurtleTeleopRclex.Pose do
 
     context = Rclex.rclexinit()
     {:ok, nodename} = Rclex.ResourceServer.create_node(context, 'subpose_ex')
-    {:ok, subscriber_id} = Rclex.Node.create_subscriber(nodename, 'Turtlesim.Msg.Pose', 'turtle1/pose')
+
+    {:ok, subscriber_id} =
+      Rclex.Node.create_subscriber(nodename, 'Turtlesim.Msg.Pose', 'turtle1/pose')
+
     Rclex.Subscriber.start_subscribing([subscriber_id], context, &subpose_callback/1)
+
     {:ok, timer} =
       Rclex.ResourceServer.create_timer(
         &sendpose_callback/1,

@@ -6,10 +6,12 @@ This repository offers the examples of [Rclex](https://github.com/rclex/rclex), 
 
 Each example project is located in a subdirectory. Please refer to the respective README for operating instructions.
 
-- Rclex_talker        : simple talker on single node
-- Rclex_talkers       : simple talkers on multiple nodes
-- Rclex_listener      : simple listener on single node
-- Rclex_listeners     : simple listeners on multiple nodes
+- rclex_talker        : simple talker on single node
+- rclex_talkers       : simple talkers on multiple nodes
+- rclex_listener      : simple listener on single node
+- rclex_listeners     : simple listeners on multiple nodes
+- rclex_topic         : pub/sub communication on the same node to single topics
+- rclex_topics        : pub/sub communication on multiple nodes to corresponding topics
 - turtle_teleop_rclex : teleoperation for turtle_sim from the key input
 - turtle_pose_phoenix : web visualizer of the value of /pose in turtle_sim
 

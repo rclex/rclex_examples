@@ -1,10 +1,10 @@
-defmodule RclexTalkers do
+defmodule RclexTopics.Talkers do
   def publish_message(num_talkers) do
     context = Rclex.rclexinit()
     {:ok, nodes} = Rclex.ResourceServer.create_nodes(context, 'talker', num_talkers)
 
     {:ok, publishers} =
-      Rclex.Node.create_publishers(nodes, 'StdMsgs.Msg.String', 'chatter', :single)
+      Rclex.Node.create_publishers(nodes, 'StdMsgs.Msg.String', 'chatter', :multi)
 
     {:ok, timer} =
       Rclex.ResourceServer.create_timer(&pub_callback/1, publishers, 1000, 'continus_timer')
