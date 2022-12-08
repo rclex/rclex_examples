@@ -6,11 +6,15 @@ pub/sub communication to multiple topics
 
 This example is the Rclex version of [demo_nodes_cpp/talker](https://github.com/ros2/demos/blob/rolling/demo_nodes_cpp/src/topics/talker.cpp), but multiple topics will be created at the same time by one of the unique features on Rclex.
 
-In `RclexTopic.Talkers`, the multiple Rclex nodes `talkerX` publishes string (`std_msgs/msg/String`) message to `/chatterX` topic every 1,000 ms.
-Also, in `RclexTopic.Listeners`, the multiple Rclex nodes `listenerX` subscribes string (`std_msgs/msg/String`) message from `/chatterX` topic.
+The multiple Rclex nodes `selfie_pubsubX` publishes string (`std_msgs/msg/String`) message to `/chatterX` topic every 1,000 ms.
+In addition,`selfie_pubsubX` also subscribes string (`std_msgs/msg/String`) message from `/chatterX` topic.
 The `X` of nodes and topics correspond to each other.
 The number of nodes and topics can be specified in the argument.
 The nodes will terminate after 10,000 ms has elapsed.
+
+This example includes separate implementations of talkers and subscribers.  
+In `RclexTopic.Talkers`, the multiple Rclex nodes `talkerX` publishes string (`std_msgs/msg/String`) message to `/chatterX` topic every 1,000 ms.
+Also, in `RclexTopic.Listeners`, the multiple Rclex nodes `listenerX` subscribes string (`std_msgs/msg/String`) message from `/chatterX` topic.
 
 ## Operation
 
@@ -24,6 +28,14 @@ mix compile
 ```
 
 ### Execution
+
+#### Selfie pub/sub
+
+```
+$ mix deps.get
+$ iex -S mix
+iex()> RclexTopics.selfie_pubsub(10)  # 10 Nodes will publish and subscribe to corresponding topics at the same time
+```
 
 #### Talkers
 
