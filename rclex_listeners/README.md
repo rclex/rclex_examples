@@ -26,7 +26,7 @@ mix compile
 ```
 $ mix deps.get
 $ iex -S mix
-iex()> RclexListeners.subscribe_message(10)  # 10 Listener will subscribe at the same time
+iex()> RclexListeners.subscribe_message(10)  # 10 Listeners will subscribe at the same time
 ```
 
 You can confirm the subscription of messages by several ways.
