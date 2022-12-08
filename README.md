@@ -1,16 +1,34 @@
 # rclex_examples
-Examples for Rclex
 
- - Rclex_listener      : single node listener
- - Rclex_talker        : single node talker
- - Rclex_many_listener : multi nodes listener
- - Rclex_many_talker   : multi nodes talker
- - turtle_teleop_rclex : key input to turtle_sim sample
- - turtle_pose_phoenix : turtle topic web visualizer
+This repository offers the examples of [Rclex](https://github.com/rclex/rclex), that is ROS 2 client library for Elixir.
 
-## How to try examples
+## Example lists
 
-Let's get a quick start for [rclex](https://github.com/rclex/rclex) using the Docker environment!
+Each example project is located in a subdirectory. Please refer to the respective README for operating instructions.
+
+- Rclex_talker        : simple talker on single node
+- Rclex_talkers       : simple talkers on multiple nodes
+- Rclex_listener      : simple listener on single node
+- Rclex_listeners     : simple listeners on multiple nodes
+- turtle_teleop_rclex : teleoperation for turtle_sim from the key input
+- turtle_pose_phoenix : web visualizer of the value of /pose in turtle_sim
+
+## Environment
+
+Currently, we have tested the operation of examples in the following environmet.
+
+- Ubuntu 20.04.2 LTS (Focal Fossa)
+- ROS 2 [Foxy Fitzroy](https://docs.ros.org/en/foxy/Releases/Release-Foxy-Fitzroy.html)
+- Elixir 1.13.4-otp-25
+- Erlang/OTP 25.0.3
+- Rclex [v0.8.2](https://hexdocs.pm/rclex/0.8.2/readme.html)
+
+Please also refer to [rclex documentation](https://github.com/rclex/rclex#recommended-environment) for more detail.
+
+## Quickstart
+
+We also we provide [rclex_docker](https://github.com/rclex/rclex_docker) environment to try out the examples right away.
+Let's get a quick start using the Docker environment!
 
 ```
 $ cd your_woking_directry

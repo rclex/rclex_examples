@@ -1,13 +1,14 @@
-# RclexTalker
+# RclexTalkers
 
-simple talker on single node
+simple talkers on multiple node
 
 ## Description
 
-This example is the Rclex version of [demo_nodes_cpp/talker](https://github.com/ros2/demos/blob/rolling/demo_nodes_cpp/src/topics/talker.cpp).
+This example is the Rclex version of [demo_nodes_cpp/talker](https://github.com/ros2/demos/blob/rolling/demo_nodes_cpp/src/topics/talker.cpp), but multiple nodes will be created at the same time by one of the unique features on Rclex.
 
-The Rclex node `talker` publishes string (`std_msgs/msg/String`) message to `/chatter` topic every 1,000 ms.
-The node will terminate after 10,000 ms has elapsed.
+The multiple Rclex nodes `talkerX` publishes string (`std_msgs/msg/String`) message to `/chatter` topic every 1,000 ms.
+The number of nodes can be specified in the argument.
+The nodes will terminate after 10,000 ms has elapsed.
 
 ## Operation
 
@@ -25,7 +26,7 @@ mix compile
 ```
 $ mix deps.get
 $ iex -S mix
-iex()> RclexTalker.publish_message
+iex()> RclexTalkers.publish_message(10)  # 10 Talkers will publish at the same time
 ```
 
 You can confirm published messages by several ways.

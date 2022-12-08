@@ -1,4 +1,4 @@
-defmodule RclexManyListeners do
+defmodule RclexListeners do
   def subscribe_message(num_listeners) do
     context = Rclex.rclexinit()
     {:ok, nodes} = Rclex.ResourceServer.create_nodes(context, 'listener', num_listeners)

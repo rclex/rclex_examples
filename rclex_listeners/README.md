@@ -1,12 +1,13 @@
-# RclexListener
+# RclexListeners
 
-simple listener on single node
+simple listeners on multiple node
 
 ## Description
 
-This example is the Rclex version of [demo_nodes_cpp/listener](https://github.com/ros2/demos/blob/rolling/demo_nodes_cpp/src/topics/listener.cpp).
+This example is the Rclex version of [demo_nodes_cpp/listener](https://github.com/ros2/demos/blob/rolling/demo_nodes_cpp/src/topics/listener.cpp), but multiple nodes will be created at the same time by one of the unique features on Rclex.
 
-The Rclex node `listener` subscribes string (`std_msgs/msg/String`) message from `/chatter` topic.
+The multiple Rclex nodes `listenerX` subscribes string (`std_msgs/msg/String`) message from `/chatter` topic.
+The number of nodes can be specified in the argument.
 The node will terminate after 10,000 ms has elapsed.
 
 ## Operation
@@ -25,7 +26,7 @@ mix compile
 ```
 $ mix deps.get
 $ iex -S mix
-iex()> RclexListener.subscribe_message
+iex()> RclexListeners.subscribe_message(10)  # 10 Listener will subscribe at the same time
 ```
 
 You can confirm the subscription of messages by several ways.

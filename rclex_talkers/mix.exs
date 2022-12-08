@@ -1,9 +1,9 @@
-defmodule RclexManyListeners.MixProject do
+defmodule RclexTalkers.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :rclex_many_listeners,
+      app: :rclex_talkers,
       version: "0.1.0",
       elixir: "~> 1.12",
       start_permanent: Mix.env() == :prod,
@@ -19,7 +19,8 @@ defmodule RclexManyListeners.MixProject do
 
   defp deps do
     [
-      {:rclex, "~> 0.6.1"}
+      # {:rclex, path: "../../rclex", override: false}
+      {:rclex, "~> 0.8.2"}
     ]
   end
 end
