@@ -1,6 +1,6 @@
 import Config
 
-config :rclex, :message_packages,
+config :rclex, :ros2_message_types,
   [
     "std_msgs/msg/String",
     "geometry_msgs/msg/Twist",
