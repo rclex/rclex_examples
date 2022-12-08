@@ -26,7 +26,7 @@ mix compile
 ```
 $ mix deps.get
 $ iex -S mix
-iex()> RclexTopic.selfie_pubsub(10)
+iex()> RclexTopic.selfie_pubsub
 ```
 
 You can confirm the messages for publication/subscription by several ways.
