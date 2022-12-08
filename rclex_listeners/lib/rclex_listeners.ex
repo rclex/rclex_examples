@@ -2,7 +2,10 @@ defmodule RclexListeners do
   def subscribe_message(num_listeners) do
     context = Rclex.rclexinit()
     {:ok, nodes} = Rclex.ResourceServer.create_nodes(context, 'listener', num_listeners)
-    {:ok, subscribers} = Rclex.Node.create_subscribers(nodes, 'StdMsgs.Msg.String', 'chatter', :single)
+
+    {:ok, subscribers} =
+      Rclex.Node.create_subscribers(nodes, 'StdMsgs.Msg.String', 'chatter', :single)
+
     Rclex.Subscriber.start_subscribing(subscribers, context, &sub_callback/1)
 
     Process.sleep(10000)
