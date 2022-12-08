@@ -1,21 +1,70 @@
 # RclexTopics
 
-**TODO: Add description**
+pub/sub communication to multiple topics
 
-## Installation
+## Description
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `rclex_topics` to your list of dependencies in `mix.exs`:
+This example is the Rclex version of [demo_nodes_cpp/talker](https://github.com/ros2/demos/blob/rolling/demo_nodes_cpp/src/topics/talker.cpp), but multiple topics will be created at the same time by one of the unique features on Rclex.
 
-```elixir
-def deps do
-  [
-    {:rclex_topics, "~> 0.1.0"}
-  ]
-end
+In `RclexTopic.Talkers`, the multiple Rclex nodes `talkerX` publishes string (`std_msgs/msg/String`) message to `/chatterX` topic every 1,000 ms.
+Also, in `RclexTopic.Listeners`, the multiple Rclex nodes `listenerX` subscribes string (`std_msgs/msg/String`) message from `/chatterX` topic.
+The `X` of nodes and topics correspond to each other.
+The number of nodes and topics can be specified in the argument.
+The nodes will terminate after 10,000 ms has elapsed.
+
+## Operation
+
+### Building
+
+```
+source /opt/ros/foxy/setup.bash
+mix deps.get
+mix rclex.gen.msgs
+mix compile
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/rclex_topics>.
+### Execution
 
+#### Talkers
+
+```
+$ mix deps.get
+$ iex -S mix
+iex()> RclexTopics.Talkers.publish_message(10)  # 10 Talkers will publish to corresponding topics at the same time
+```
+
+You can confirm published messages by several ways.
+
+```
+# way 1: echo topic by ROS 2 command
+source /opt/ros/foxy/setup.bash
+ros2 topic echo /chatter0 std_msgs/msg/String  # you can confirm from other topics, e.g., /chatter1, /chatter9
+
+# way 2: listen by Rclex example
+cd rclex_examples/rclex_topics
+# (build project, see rclex_listener directory)
+iex -S mix
+iex()> RclexTopics.Listeners.subscribe_message(10)  # 10 Listeners will subscribe to corresponding topics at the same time
+```
+
+#### Listeners
+
+```
+$ mix deps.get
+$ iex -S mix
+iex()> RclexTopics.Listeners.subscribe_message(10)  # 10 Listeners will subscribe to corresponding topics at the same time
+```
+
+You can confirm published messages by several ways.
+
+```
+# way 1: echo topic by ROS 2 command
+source /opt/ros/foxy/setup.bash
+ros2 topic pub /chatter0 std_msgs/msg/String '{data: Hello from cmd!}'  # you can confirm from other topics, e.g., /chatter1, /chatter9
+
+# way 2: listen by Rclex example
+cd rclex_examples/rclex_topics
+# (build project, see rclex_listener directory)
+iex -S mix
+iex()> RclexTopics.Talkers.publish_message(10)  # 10 Talkers will publish to corresponding topics at the same time
+```
