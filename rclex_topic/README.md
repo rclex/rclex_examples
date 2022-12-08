@@ -1,21 +1,33 @@
 # RclexTopic
 
-**TODO: Add description**
+pub/sub communication on the same node to single topics
 
-## Installation
+## Description
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `rclex_topic` to your list of dependencies in `mix.exs`:
+This example offers the implementation of the node that simultaneously publish and subscribe to the same topic.
 
-```elixir
-def deps do
-  [
-    {:rclex_topic, "~> 0.1.0"}
-  ]
-end
+The Rclex node `selfie_pubsub` publishes string (`std_msgs/msg/String`) message to `/chatter` topic every 1,000 ms.
+In addition,`selfie_pubsub` also subscribes string (`std_msgs/msg/String`) message from `/chatter` topic.
+The nodes will terminate after 10,000 ms has elapsed.
+
+## Operation
+
+### Building
+
+```
+source /opt/ros/foxy/setup.bash
+mix deps.get
+mix rclex.gen.msgs
+mix compile
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/rclex_topic>.
+### Execution
 
+```
+$ mix deps.get
+$ iex -S mix
+iex()> RclexTopic.selfie_pubsub(10)
+```
+
+You can confirm the messages for publication/subscription by several ways.
+Please refer to the other examples for more details.
