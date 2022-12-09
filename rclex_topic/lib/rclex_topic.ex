@@ -11,10 +11,10 @@ defmodule RclexTopic do
 
     Process.sleep(10000)
 
-    Rclex.Subscriber.stop_subscribing(subscriber)
-    Rclex.Node.finish_jobs(subscriber)
+    Rclex.Subscriber.stop_subscribing([subscriber])
+    Rclex.Node.finish_job(subscriber)
     Rclex.ResourceServer.stop_timer(timer)
-    Rclex.Node.finish_jobs(publisher)
+    Rclex.Node.finish_job(publisher)
     Rclex.ResourceServer.finish_node(node)
     Rclex.shutdown(context)
   end
