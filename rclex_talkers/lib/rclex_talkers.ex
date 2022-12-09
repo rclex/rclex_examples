@@ -6,6 +6,10 @@ defmodule RclexTalkers do
     {:ok, publishers} =
       Rclex.Node.create_publishers(nodes, 'StdMsgs.Msg.String', 'chatter', :single)
 
+    # This sleep is essential for now
+    # see Issue https://github.com/rclex/rclex/issues/212
+    Process.sleep(100)
+
     {:ok, timer} =
       Rclex.ResourceServer.create_timer(&pub_callback/1, publishers, 1000, 'continus_timer')
 
