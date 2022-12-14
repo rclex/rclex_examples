@@ -24,7 +24,6 @@ mix compile
 ### Execution
 
 ```
-$ mix deps.get
 $ iex -S mix
 iex()> RclexTopic.selfie_pubsub
 ```

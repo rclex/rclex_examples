@@ -24,7 +24,6 @@ mix compile
 ### Execution
 
 ```
-$ mix deps.get
 $ iex -S mix
 iex()> RclexTalkers.publish_message(10)  # 10 Talkers will publish at the same time
 ```
