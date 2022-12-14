@@ -20,8 +20,10 @@ defmodule TurtleTeleopRclex.TeleopKey do
     if cmd == "q" do
       IO.puts("quit key was pressed.")
     else
-      twist_get(cmd)
-      |> twist_pub(publisher)
+      case twist_get(cmd) do
+        nil -> ""
+        twist -> twist_pub(twist, publisher)
+      end
 
       # wait for publishing
       Process.sleep(10)
