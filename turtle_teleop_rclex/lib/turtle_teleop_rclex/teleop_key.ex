@@ -6,7 +6,6 @@ defmodule TurtleTeleopRclex.TeleopKey do
     {:ok, publisher} =
       Rclex.Node.create_publisher(node, 'GeometryMsgs.Msg.Twist', 'turtle1/cmd_vel')
 
-    IO.puts("Input 'W|A|S|D|X' keys to move the turtle. Quit 'Q' to quit.")
     teleop_loop(publisher)
 
     Rclex.Node.finish_job(publisher)
@@ -15,7 +14,8 @@ defmodule TurtleTeleopRclex.TeleopKey do
   end
 
   defp teleop_loop(publisher) do
-    cmd = getch()
+    cmd =
+      IO.gets("Input 'W|A|S|D|X' keys to move the turtle. Quit 'Q' to quit: ") |> String.trim()
 
     if cmd == "q" do
       IO.puts("quit key was pressed.")
@@ -23,25 +23,9 @@ defmodule TurtleTeleopRclex.TeleopKey do
       twist_get(cmd)
       |> twist_pub(publisher)
 
+      # wait for publishing
+      Process.sleep(10)
       teleop_loop(publisher)
-    end
-  end
-
-  defp getch do
-    ruby_cmd = ~S"""
-      ruby -e '
-        require "io/console"
-        @output = IO.new(4)
-        @output.sync = true
-        char = STDIN.getch
-        @output.write(char)
-      '
-    """
-
-    port = Port.open({:spawn, ruby_cmd}, [:binary, :nouse_stdio])
-
-    receive do
-      {^port, {:data, result}} -> IO.inspect(result)
     end
   end
 

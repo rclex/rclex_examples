@@ -1,11 +1,6 @@
 # TurtleTeleopRclex
 ターミナルのキー入力から`/turtle1/cmd_vel`トピックへturtlesimの制御情報を出版
 
-## 準備
-- rubyのインストール
-```shell
-$ apt install ruby
-```
 ## 使い方
 - turtlesimを起動しておく
 ```shell
