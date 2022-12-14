@@ -1,24 +1,25 @@
 defmodule TurtleTeleopRclex.TeleopKey do
   def start_teleop do
     context = Rclex.rclexinit()
-    {:ok, nodename} = Rclex.ResourceServer.create_node(context, 'teleop_ex')
+    {:ok, node} = Rclex.ResourceServer.create_node(context, 'teleop_ex')
 
-    {:ok, publisher_id} =
-      Rclex.Node.create_publisher(nodename, 'GeometryMsgs.Msg.Twist', 'turtle1/cmd_vel')
+    {:ok, publisher} =
+      Rclex.Node.create_publisher(node, 'GeometryMsgs.Msg.Twist', 'turtle1/cmd_vel')
 
-    IO.puts("Use W|A|S|D|X keys to move the turtle. Quit 'Q' to quit.")
-    teleop_loop(publisher_id)
+    IO.puts("Input 'W|A|S|D|X' keys to move the turtle. Quit 'Q' to quit.")
+    teleop_loop(publisher)
   end
 
-  defp teleop_loop(publisher_id) do
+  defp teleop_loop(publisher) do
     cmd = getch()
+
     if cmd == "q" do
       IO.puts("quit key was pressed.")
     else
       twist_get(cmd)
-      |> twist_pub(publisher_id)
+      |> twist_pub(publisher)
 
-      teleop_loop(publisher_id)
+      teleop_loop(publisher)
     end
   end
 
@@ -43,10 +44,10 @@ defmodule TurtleTeleopRclex.TeleopKey do
   defp twist_pub(nil, _) do
   end
 
-  defp twist_pub(data, publisher_id) do
+  defp twist_pub(data, publisher) do
     msg = Rclex.Msg.initialize('GeometryMsgs.Msg.Twist')
     Rclex.Msg.set(msg, data, 'GeometryMsgs.Msg.Twist')
-    Rclex.Publisher.publish([publisher_id], [msg])
+    Rclex.Publisher.publish([publisher], [msg])
   end
 
   defp twist_get("w") do
