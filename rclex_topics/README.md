@@ -33,7 +33,6 @@ mix compile
 #### Selfie pub/sub
 
 ```
-$ mix deps.get
 $ iex -S mix
 iex()> RclexTopics.selfie_pubsub(10)  # 10 Nodes will publish and subscribe to corresponding topics at the same time
 ```

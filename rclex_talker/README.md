@@ -23,7 +23,6 @@ mix compile
 ### Execution
 
 ```
-$ mix deps.get
 $ iex -S mix
 iex()> RclexTalker.publish_message
 ```

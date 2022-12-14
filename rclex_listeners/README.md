@@ -24,7 +24,6 @@ mix compile
 ### Execution
 
 ```
-$ mix deps.get
 $ iex -S mix
 iex()> RclexListeners.subscribe_message(10)  # 10 Listeners will subscribe at the same time
 ```
