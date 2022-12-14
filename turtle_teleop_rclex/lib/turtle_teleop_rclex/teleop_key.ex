@@ -11,11 +11,15 @@ defmodule TurtleTeleopRclex.TeleopKey do
   end
 
   defp teleop_loop(publisher_id) do
-    getch()
-    |> twist_get
-    |> twist_pub(publisher_id)
+    cmd = getch()
+    if cmd == "q" do
+      IO.puts("quit key was pressed.")
+    else
+      twist_get(cmd)
+      |> twist_pub(publisher_id)
 
-    teleop_loop(publisher_id)
+      teleop_loop(publisher_id)
+    end
   end
 
   defp getch do
@@ -63,10 +67,6 @@ defmodule TurtleTeleopRclex.TeleopKey do
 
   defp twist_get("x") do
     twist_set(-2.0, 0.0, 0.0, 0.0, 0.0, 0.0)
-  end
-
-  defp twist_get("q") do
-    exit("quit key was pressed")
   end
 
   defp twist_get(_) do
