@@ -29,9 +29,6 @@ defmodule TurtleTeleopRclex.TeleopKey do
     end
   end
 
-  defp twist_pub(nil, _) do
-  end
-
   defp twist_pub(data, publisher) do
     msg = Rclex.Msg.initialize('GeometryMsgs.Msg.Twist')
     Rclex.Msg.set(msg, data, 'GeometryMsgs.Msg.Twist')
