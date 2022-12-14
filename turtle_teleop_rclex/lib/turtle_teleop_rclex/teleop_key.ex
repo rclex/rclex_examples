@@ -8,6 +8,10 @@ defmodule TurtleTeleopRclex.TeleopKey do
 
     IO.puts("Input 'W|A|S|D|X' keys to move the turtle. Quit 'Q' to quit.")
     teleop_loop(publisher)
+
+    Rclex.Node.finish_job(publisher)
+    Rclex.ResourceServer.finish_node(node)
+    Rclex.shutdown(context)
   end
 
   defp teleop_loop(publisher) do
