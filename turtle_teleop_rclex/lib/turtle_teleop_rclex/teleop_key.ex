@@ -15,7 +15,7 @@ defmodule TurtleTeleopRclex.TeleopKey do
 
   defp teleop_loop(publisher) do
     cmd =
-      IO.gets("Input 'W|A|S|D|X' keys to move the turtle. Quit 'Q' to quit: ") |> String.trim()
+      IO.gets("Input 'W|A|D|X|S' keys to move the turtle. Quit 'Q' to quit: ") |> String.trim()
 
     if cmd == "q" do
       IO.puts("quit key was pressed.")
