@@ -17,7 +17,6 @@ defmodule TurtlePosePhoenix.Server do
   # Callbacks
   #
   def handle_cast({:pose, %{x: pose_x, y: pose_y}}, state) do
-    Logger.info("=== pose: #{inspect(%{x: pose_x, y: pose_y})} ===")
     send(state, {:pose, %{x: pose_x, y: pose_y}})
     {:noreply, state}
   end
