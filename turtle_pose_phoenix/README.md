@@ -36,11 +36,10 @@ Then, start Phoenix server.
 iex -S mix phx.server
 ```
 
-Finally, execute `SubPose.start_pose/1` on IEx.
+Finally, execute `SubPose.start_pose/1` on same IEx.
 The argument refers to the time for subscription.
 
 ```
-$ iex -S mix
 iex()> TurtlePosePhoenix.SubPose.start_pose(10000)
 ```
 
