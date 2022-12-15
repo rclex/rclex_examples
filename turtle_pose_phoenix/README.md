@@ -1,78 +1,86 @@
 # TurtlePosePhoenix
 
-- `GenServer.cast` された値をブラウザに表示する
-  - http://localhost:4000/turtle
-- プロセスの名前は `{:global, :turtle}`
-- 関連ファイル
+web visualizer for the location of turtle_sim
 
-```shell
-lib/
-├── turtle_pose_phoenix
-│   └── server.ex
-└── turtle_pose_phoenix_web
-     ├── live
-     │   ├── turtle_live.ex
-     │   └── turtle_live.html.heex
-     └── router.ex
-```
+## Description
 
-
-## 使い方１
-Phoenix自身のiexで操作する場合、GenServer.castするとXとYの値を更新できる。
-
-※`:turtle` でも良かったが、使い方２のことを考慮して `{:global, :turtle}` としている。
-
-```shell
-$ iex -S mix phx.server
-iex> GenServer.cast({:global, :turtle}, {:pose, %{x: 11, y: 22}})
-```
-
-
-## 使い方２
-別ターミナル（別ノード）から操作する場合は以下の手順で更新できる。
-
-### （０）準備
-実行するPCのIPアドレスを調べる（例：192.168.0.6）
-
-### （１）Phoenixを起動する（ターミナルA、node1）
-
-```shell
-$ iex --name node1@192.168.0.6 --cookie c2e -S mix phx.server
-iex(node1@192.168.0.6)1>
-```
-
-### （２）別ターミナルでiexを起動する（ターミナルB、node2）
-
-別PCで起動して `GenServer.call` する場合は、IPアドレスの箇所を置き換えて実行する。
-
-```shell
-$ iex --name node2@192.168.0.6 --cookie c2e
-iex(node2@192.168.0.6)1>
-```
-
-### （３）どちらのnodeからでもいいのでNode.connect()を実行する
-
-```shell
-iex(node1@192.168.0.6)1> Node.list()　←確認
-[]
-
-iex(node1@192.168.0.6)2> Node.connect(:"node2@192.168.0.6")
-true
-
-iex(node1@192.168.0.6)3> Node.list()　←確認
-[:"node2@192.168.0.6"]
-```
-
-### （４）node2で以下を実行する
-
-```shell
-iex(node2@192.168.0.6)8> GenServer.cast({:global, :turtle}, {:pose, %{x: 123, y: 987}})
-```
-
-### （５）ウェブページのXとYが更新されているか確認する
+This example offers the integration of Rclex and [Phoenix Framework](https://www.phoenixframework.org/).
+The x/y location of [turtlesim_node](https://docs.ros.org/en/foxy/Tutorials/Beginner-CLI-Tools/Introducing-Turtlesim/Introducing-Turtlesim.html), that is the most famous examle in ROS community, will be visualized on the following web page.  
 http://localhost:4000/turtle
 
+More precisely, `subpose_ex` in SubPose module subscribes Pose (`turtlesim/msg/Pose`) message from `/turtle1/pose` topic, and casts it to `:turtle` GenServer that is associated to Phoenix LiveView mechanism.
 
-# そのうちやるかもリスト
+## Operation
+
+### Building
+
+```
+source /opt/ros/foxy/setup.bash
+mix deps.get
+mix rclex.gen.msgs
+mix compile
+```
+
+### Execution
+
+First of all, please run turtlesim_node on the other terminal.
+
+```
+source /opt/ros/foxy/setup.bash
+ros2 run turtlesim turtlesim_node
+```
+
+Then, start Phoenix server.
+
+```
+iex -S mix phx.server
+```
+
+Finally, execute `SubPose.start_pose/1` on IEx.
+The argument refers to the time for subscription.
+
+```
+$ iex -S mix
+iex()> TurtlePosePhoenix.SubPose.start_pose(10000)
+```
+
+You can observe the location of turtle on the following page by accessing the web browser. And also, you can see the live location according to the teleoperation of turtle by [turtle_teleop_rclex](../turtle_teleop_rclex) example.  
+http://localhost:4000/turtle
+
+Note that `/turtle1/pose` topic is published at 0.015 ms intervals. You will see a large number of output messages on the console.
+
+## Supplimentary
+
+### Debugging by itself
+
+For debugging, you can cast the values on IEx by itself.
+
+```
+$ iex -S mix phx.server
+iex()> GenServer.cast({:global, :turtle}, {:pose, %{x: 11, y: 22}})
+```
+
+### Connect with Erlang Node
+
+Since `:turtle` is implemented by GenServer, you can also cast the value from TurtleTeleopRclex.SubPose module. Please check [turtle_teleop_rclex/README.md#visualization-of-pose-on-phoenix](../turtle_teleop_rclex/README.md#visualization-of-pose-on-phoenix) section for more detail.
+
+### Associated files
+
+```shell
+config/
+└── config.exs      # Rclex message types
+lib/
+├── turtle_pose_phoenix
+│   └── server.ex   # :turtle GenServer
+│   └── sub_pose.ex # SubPose module
+└── turtle_pose_phoenix_web
+     ├── live
+     │   ├── turtle_live.ex         # implementation of LiveView
+     │   └── turtle_live.html.heex  # template for LiveView
+     └── router.ex  # routing for /turtle page
+```
+
+## TODO??
+
 - [ ] XとYをいい感じに見せる
 - [ ] 亀を操作できるようにする？

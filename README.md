@@ -13,7 +13,7 @@ Each example project is located in a subdirectory. Please refer to the respectiv
 - rclex_topic         : pub/sub communication on the same node to single topics
 - rclex_topics        : pub/sub communication on multiple nodes to corresponding topics
 - turtle_teleop_rclex : teleoperation for turtle_sim from the key input
-- turtle_pose_phoenix : web visualizer of the value of /pose in turtle_sim
+- turtle_pose_phoenix : web visualizer for the location of turtle_sim
 
 ## Environment
 
