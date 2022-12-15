@@ -18,10 +18,10 @@ defmodule TurtleTeleopRclex.TeleopKey do
       IO.gets("Input 'W|A|D|X|S' keys to move the turtle. Quit 'Q' to quit: ") |> String.trim()
 
     if cmd == "q" do
-      IO.puts("quit key was pressed.")
+      IO.puts("Quit key was pressed.")
     else
       case twist_get(cmd) do
-        nil -> ""
+        nil -> IO.puts("Input key is invalid, so ignored.")
         twist -> twist_pub(twist, publisher)
       end
 
