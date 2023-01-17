@@ -23,7 +23,7 @@ Currently, we have tested the operation of examples in the following environmet.
 - ROS 2 [Foxy Fitzroy](https://docs.ros.org/en/foxy/Releases/Release-Foxy-Fitzroy.html)
 - Elixir 1.13.4-otp-25
 - Erlang/OTP 25.0.3
-- Rclex [v0.8.2](https://hexdocs.pm/rclex/0.8.2/readme.html)
+- Rclex [v0.8.3](https://hexdocs.pm/rclex/0.8.3/readme.html)
 
 Please also refer to [rclex documentation](https://github.com/rclex/rclex#recommended-environment) for more detail.
 
